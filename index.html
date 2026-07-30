@@ -1,0 +1,704 @@
+<!DOCTYPE html><html class="dark" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Pizza Roma | La Auténtica Experiencia Romana</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#454747",
+                        "primary": "#ffb3b3",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container": "#201f1f",
+                        "secondary": "#c6c6c6",
+                        "inverse-primary": "#b42537",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-error": "#690005",
+                        "outline": "#a88989",
+                        "on-background": "#e5e2e1",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "tertiary-container": "#555454",
+                        "background": "#131313",
+                        "primary-fixed": "#ffdad9",
+                        "outline-variant": "#594040",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "primary-fixed-dim": "#ffb3b3",
+                        "on-primary-container": "#ffb7b7",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#400009",
+                        "surface-container-highest": "#353534",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#353534",
+                        "surface-container-low": "#1c1b1b",
+                        "tertiary": "#c8c6c5",
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface-variant": "#e1bebe",
+                        "on-primary": "#680015",
+                        "primary-container": "#a6192e",
+                        "on-tertiary-container": "#cbc8c8",
+                        "surface": "#131313",
+                        "surface-dim": "#131313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-primary-fixed-variant": "#920322",
+                        "on-tertiary": "#313030",
+                        "on-secondary": "#2f3131",
+                        "surface-bright": "#393939",
+                        "surface-tint": "#ffb3b3",
+                        "on-secondary-container": "#b5b5b5",
+                        "secondary-fixed": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Manrope"],
+                        "display-lg-mobile": ["Libre Caslon Text"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "headline-sm": ["Manrope"],
+                        "headline-md": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .menu-leader {
+            flex-grow: 1;
+            border-bottom: 1px dotted #a88989;
+            margin: 0 8px;
+            margin-bottom: 6px;
+        }
+        .pizza-card-shadow {
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+        }
+        .editorial-divider {
+            height: 2px;
+            background-color: #ffb3b3;
+            width: 80px;
+        }
+        
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        .stagger-1 { animation-delay: 0.2s; }
+        .stagger-2 { animation-delay: 0.4s; }
+        .stagger-3 { animation-delay: 0.6s; }
+
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #a6192e 0%, #680015 100%);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .shimmer-btn::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0) 40%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0) 60%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+        .shimmer-btn:hover::after {
+            left: 100%;
+            opacity: 1;
+        }
+
+        .text-shadow-premium {
+            text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+        
+        .hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .image-mask-premium {
+            mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+        }
+
+        /* FAQ Accordion Styles */
+        .faq-item input:checked ~ .faq-content {
+            max-height: 200px;
+            margin-top: 16px;
+            opacity: 1;
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/95 border-b border-surface-container-highest backdrop-blur-md">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20 flex justify-between items-center">
+<div class="font-headline-md text-headline-md text-primary tracking-tight">Pizza Roma</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-caps text-label-caps text-primary border-b-2 border-primary pb-1" href="#menu">Menú</a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-all duration-300 px-2 py-1" href="#story">Nosotros</a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-all duration-300 px-2 py-1" href="#testimonials">Testimonios</a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-all duration-300 px-2 py-1" href="#contact">Contacto</a>
+</div>
+<a class="bg-primary-container text-on-primary-container px-6 py-3 font-label-caps text-label-caps uppercase tracking-widest active:scale-95 transition-transform duration-150 hover:bg-primary hover:text-on-primary" href="https://wa.me/5491112345678?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20Pizza%20Roma." target="_blank">
+            Pedir Ahora
+        </a>
+</div>
+</nav>
+<!-- Floating WhatsApp Button -->
+<a class="fixed bottom-24 right-6 md:bottom-8 md:right-8 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform active:scale-90 flex items-center justify-center" href="https://wa.me/5491112345678?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20Pizza%20Roma." target="_blank">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+</svg>
+</a>
+<!-- Sticky Bottom Bar (Mobile) -->
+<div class="fixed bottom-0 left-0 w-full z-[55] md:hidden bg-background/95 border-t border-surface-container-highest backdrop-blur-md grid grid-cols-2">
+<a class="flex flex-col items-center justify-center py-3 text-secondary hover:text-primary" href="#menu">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="text-[10px] font-label-caps uppercase">Ver menú</span>
+</a>
+<a class="flex flex-col items-center justify-center py-3 bg-primary-container text-on-primary-container" href="https://wa.me/5491112345678?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20Pizza%20Roma." target="_blank">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-[10px] font-label-caps uppercase">Pedir WhatsApp</span>
+</a>
+</div>
+<main class="mt-20">
+<!-- Hero Section -->
+<section class="relative h-[920px] flex items-center overflow-hidden bg-surface-container-lowest">
+<canvas class="hero-canvas" id="hero-shader" width="1280" height="920"></canvas>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+<div class="text-white space-y-8">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg leading-tight tracking-[0.02em] text-shadow-premium animate-fade-in-up stagger-1">
+                    La Auténtica Experiencia de la <span class="text-primary italic">Pizza Romana</span>
+</h1>
+<p class="font-body-lg text-body-lg max-w-lg opacity-90 border-l-4 border-primary pl-8 text-shadow-premium animate-fade-in-up stagger-2">
+                    Descubra la perfección artesanal: 72 horas de fermentación lenta e ingredientes importados directamente de la región de Lazio.
+                </p>
+<div class="animate-fade-in-up stagger-3 pt-4">
+<a class="inline-block shimmer-btn group text-on-primary-container px-12 py-6 font-label-caps text-label-caps uppercase tracking-[0.2em] transition-all hover:-translate-y-1 hover:scale-105" href="#menu">
+                        Explorar Menú
+                    </a>
+</div>
+</div>
+<div class="relative hidden lg:block animate-fade-in-up stagger-2">
+<div class="relative z-20">
+<img alt="Gourmet Roman pizza with basil" class="w-full h-auto object-cover rounded-full image-mask-premium shadow-2xl scale-110" src="https://lh3.googleusercontent.com/aida/AP1WRLsdEPLijxRg3nP5oWC9wehCYP2BAPiZBiX_wT7KGiUPpmXIDU5wGaS4YqB-emlEuDszHUMgOzKHfChTZ14P-uLs0RzZWmjZl2bjUtVqYD7acRko3kuJ6LRlQY3vkRwy-2px5kHcZhkwBsNF5tQh12JpNGfChHxJEYTR23_bJuupzbdUyTedyIPfxg5XrcS5Swe9tothCUNZlLp2PoHE15Stl9KmIAKIwdsJlvMJzKiI1VzFaXbguOLjuY5m">
+</div>
+<div class="absolute inset-0 border border-primary/20 rounded-full scale-125 -z-10 animate-pulse"></div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-24 bg-surface-container-lowest relative z-20 border-y border-surface-container-highest">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col items-center text-center group p-6 hover:bg-surface-container-low transition-colors duration-500 rounded-lg">
+<span class="material-symbols-outlined text-primary mb-4" style="font-size: 40px;">delivery_dining</span>
+<h4 class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface">Envío a domicilio</h4>
+<p class="text-[12px] text-secondary mt-2">Rápido y caliente</p>
+</div>
+<div class="flex flex-col items-center text-center group p-6 hover:bg-surface-container-low transition-colors duration-500 rounded-lg">
+<span class="material-symbols-outlined text-primary mb-4" style="font-size: 40px;">takeout_dining</span>
+<h4 class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface">Retiro en local</h4>
+<p class="text-[12px] text-secondary mt-2">Listo en 20 min</p>
+</div>
+<div class="flex flex-col items-center text-center group p-6 hover:bg-surface-container-low transition-colors duration-500 rounded-lg">
+<span class="material-symbols-outlined text-primary mb-4" style="font-size: 40px;">event_seat</span>
+<h4 class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface">Reserva de mesa</h4>
+<p class="text-[12px] text-secondary mt-2">Asegura tu lugar</p>
+</div>
+<div class="flex flex-col items-center text-center group p-6 hover:bg-surface-container-low transition-colors duration-500 rounded-lg">
+<span class="material-symbols-outlined text-primary mb-4" style="font-size: 40px;">bolt</span>
+<h4 class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface">Atención rápida</h4>
+<p class="text-[12px] text-secondary mt-2">Sin esperas</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us -->
+<section class="py-24 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop bg-background">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="flex flex-col items-center text-center group">
+<div class="w-16 h-16 bg-surface-container-low flex items-center justify-center mb-6 group-hover:bg-primary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-container" style="font-variation-settings: &quot;FILL&quot; 0; font-size: 32px;">eco</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 text-on-surface">Ingredientes de Origen</h3>
+<p class="font-body-md text-body-md text-secondary">Harinas italianas de molino de piedra y productos frescos de temporada directamente de productores locales.</p>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-16 h-16 bg-surface-container-low flex items-center justify-center mb-6 group-hover:bg-primary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-container" style="font-variation-settings: &quot;FILL&quot; 0; font-size: 32px;">local_fire_department</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 text-on-surface">Tradición Artesanal</h3>
+<p class="font-body-md text-body-md text-secondary">Masa de fermentación lenta (72 horas) cocida a la perfección en nuestro horno de leña tradicional romano.</p>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-16 h-16 bg-surface-container-low flex items-center justify-center mb-6 group-hover:bg-primary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-container" style="font-variation-settings: &quot;FILL&quot; 0; font-size: 32px;">restaurant_menu</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 text-on-surface">Sabor Inigualable</h3>
+<p class="font-body-md text-body-md text-secondary">Recetas familiares transmitidas de generación en generación, capturando el espíritu de la Roma clásica.</p>
+</div>
+</div>
+</section>
+<!-- Our Story Section -->
+<section class="py-24 bg-surface-container-low overflow-hidden" id="story">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="space-y-6">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Nuestra Historia</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">El Secreto de la Masa Perfecta</h2>
+<p class="font-body-lg text-secondary">Nuestra pasión por la pizza comienza en el corazón de Roma. Cada mañana, iniciamos el ritual de la masa: una mezcla de harinas de fuerza italianas, agua pura y un proceso de fermentación lenta de 72 horas.</p>
+<p class="font-body-md text-secondary/80">Este reposo prolongado no es solo tradición; es lo que otorga a nuestra pizza esa ligereza inigualable, una base crujiente por fuera y aireada por dentro que es fácil de digerir y llena de matices aromáticos.</p>
+<div class="flex gap-4 pt-4">
+<div class="flex flex-col">
+<span class="text-3xl font-display-lg text-primary">72h</span>
+<span class="font-label-caps text-[10px] uppercase text-secondary">Fermentación</span>
+</div>
+<div class="w-px h-12 bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="text-3xl font-display-lg text-primary">100%</span>
+<span class="font-label-caps text-[10px] uppercase text-secondary">Ingredientes Italia</span>
+</div>
+</div>
+</div>
+<div class="relative">
+<img alt="Chef amando la masa" class="rounded-xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY1Rvsn-i-82kGNRc9sdSprSGQR5uAwdusfVs2kRnNHrQyaBqk40UIyj26bddOIN3uDcFLzYDAL8TQElhpnuISh4jR5wdikMNjpVVKwQRtaxdFR1c1936sJLchm7r5t_tUWjU51bMhr62nTgRIuSrlysSjlejfuJ_KueuoBaaLrRTum-FyE60iCb9qxHN_IiXMy1RHZIZPVROTwKbWPci41OjWGLJN6KYYTnt17NVC7_aO94oaM2k41Q">
+</div>
+</div>
+</section>
+<!-- Featured Menu -->
+<section class="py-20 bg-background relative" id="menu">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Selección del Chef</span>
+<span class="bg-surface-container-highest text-secondary text-[10px] px-2 py-0.5 rounded uppercase tracking-tighter">Precios de demostración</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Nuestras Especialidades</h2>
+</div>
+<div class="editorial-divider mb-4 hidden md:block"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16">
+<!-- Item 1 -->
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[16/9] overflow-hidden mb-6 rounded-lg">
+<img alt="Margherita Speciale" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOdubR3_YHnKIDbWYKvCBRYJ_J-8HfoUKZSNpUFwzty07XfW_YobsX2R-XcSagCRFqp_iaGa-dzSWxu2o9_O1OK7gPeIXvi7CV8Tw7qvo_OUAqpoyCuIfZ8FuaUSmBvhvWooHan0E2AnalsNd2FoNMwSVxQAeKxGdp-nUmg2Avmq8EqcnxJuQr1bpVYHsjHYClwXGOHhjkIIKNrH8EvUhbLilcHgT5GcWnt8Wet8kqGFzHtuLiMEcqNw">
+<span class="absolute top-4 left-4 bg-primary text-on-primary font-label-caps text-[10px] px-3 py-1 uppercase rounded-full">Más pedida</span>
+</div>
+<div class="flex items-end mb-2">
+<h4 class="font-headline-sm text-headline-sm italic text-on-surface">Margherita Speciale</h4>
+<div class="menu-leader"></div>
+<span class="font-label-caps text-label-caps text-primary">14€</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mb-6">Tomate San Marzano, mozzarella di bufala, albahaca fresca y aceite de oliva virgen extra de la primera prensa.</p>
+<a class="flex items-center gap-2 text-primary font-label-caps text-label-caps uppercase tracking-widest hover:underline group-hover:translate-x-2 transition-transform duration-300" href="https://wa.me/5491112345678?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20Pizza%20Roma.">
+                        Pedir por WhatsApp <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[16/9] overflow-hidden mb-6 rounded-lg">
+<img alt="Quattro Formaggi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzoNjq9DqEkexAy4mkQVlC5lgoZfsztRMIRXJzJUg-qu3q-bzGo1dGmhGLtHpToKrhkBlSlretm1RxP1OqOmTtkFBiAXYPWMuMMSXUOTyHik7vMvWoKOuorztm8LCQlkhCTqpYF5TBPML3uHACi3Yow8AxbyPGzJAJZAaaOAUyHk5rzt0dmlKDPGR75EjwtuKOuErnjKUTxKDw_aJY05OZ0KjqT-nQAKrjqojolu1l9piNLk-gVGH89g">
+<span class="absolute top-4 left-4 bg-secondary-container text-on-surface font-label-caps text-[10px] px-3 py-1 uppercase rounded-full">Vegetariana</span>
+</div>
+<div class="flex items-end mb-2">
+<h4 class="font-headline-sm text-headline-sm italic text-on-surface">Quattro Formaggi</h4>
+<div class="menu-leader"></div>
+<span class="font-label-caps text-label-caps text-primary">16€</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mb-6">Una selección premium de Gorgonzola DOP, Parmigiano Reggiano 24 meses, Provolone y Mozzarella fior di latte.</p>
+<a class="flex items-center gap-2 text-primary font-label-caps text-label-caps uppercase tracking-widest hover:underline group-hover:translate-x-2 transition-transform duration-300" href="https://wa.me/5491112345678?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20Pizza%20Roma.">
+                        Pedir por WhatsApp <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[16/9] overflow-hidden mb-6 rounded-lg">
+<img alt="Tartufata" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpF07Hisfuf_kfvBxbfGUqABtg3jfgtLZcveaXjr84PQr73OQluGv7vSKPzRCmJ8CiFQHIppoZDj9-k6PTBF1UB85HqAuKEbERR5bbJIOc4YzdNVEXxH9beUdI8O5zTw3AmktJmWFC3l-MzDnPTGEkPIX33bDlhVlJ-mX032Y2hy7AoirZrIuxrQzpqk-iowVDTmjFgWiWARpJQcBjLyJPF7FoxirmSvTXSKwDHq_5nX3XGNadhhpHbQ">
+<span class="absolute top-4 left-4 bg-primary-container text-on-primary-container font-label-caps text-[10px] px-3 py-1 uppercase rounded-full">Especial de la casa</span>
+</div>
+<div class="flex items-end mb-2">
+<h4 class="font-headline-sm text-headline-sm italic text-on-surface">Tartufata</h4>
+<div class="menu-leader"></div>
+<span class="font-label-caps text-label-caps text-primary">19€</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mb-6">Crema de trufa negra del Piamonte, setas silvestres, mozzarella fior di latte y un toque final de aceite de trufa blanca.</p>
+<a class="flex items-center gap-2 text-primary font-label-caps text-label-caps uppercase tracking-widest hover:underline group-hover:translate-x-2 transition-transform duration-300" href="https://wa.me/5491112345678?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20Pizza%20Roma.">
+                        Pedir por WhatsApp <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- Item 4 -->
+<div class="flex flex-col group">
+<div class="relative w-full aspect-[16/9] overflow-hidden mb-6 rounded-lg">
+<img alt="Diavola" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkzEJrhOZGyPCFleUc9yCCcSMzoFlxXnyGf-Gk_yrQl_Ru4KTyhoANFFUxjsBaT3NocSgGTRRkcBZ0fyMK--nqNMsLODKPDde7FhGjhCR-KmM_rduKI7z-bGvZdkKCHPmrcKO41a1CH56wwClAsXWcuAEdCf5VJbM2qcHvmsXiZPoqrCxg3i1Hq7RUsPNh3N2E_LcJ01CenEG7vHRqkRO5QZkTW3_TQYdDBYHBYv41GwOKzpRV9wVOIA">
+<span class="absolute top-4 left-4 bg-primary text-on-primary font-label-caps text-[10px] px-3 py-1 uppercase rounded-full">Favorito picante</span>
+</div>
+<div class="flex items-end mb-2">
+<h4 class="font-headline-sm text-headline-sm italic text-on-surface">Diavola</h4>
+<div class="menu-leader"></div>
+<span class="font-label-caps text-label-caps text-primary">15€</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mb-6">Salame picante de Calabria, peperoncino siciliano, aceitunas negras y nuestra salsa de tomate secreta artesanal.</p>
+<a class="flex items-center gap-2 text-primary font-label-caps text-label-caps uppercase tracking-widest hover:underline group-hover:translate-x-2 transition-transform duration-300" href="https://wa.me/5491112345678?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20Pizza%20Roma.">
+                        Pedir por WhatsApp <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-20 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest" id="testimonials">
+<div class="max-w-4xl mx-auto text-center mb-16">
+<span class="font-label-caps text-label-caps text-secondary mb-2 block uppercase tracking-tighter opacity-50">Testimonios de demostración</span>
+<h2 class="font-headline-md text-headline-md mb-4 text-on-surface">Lo que dicen nuestros clientes</h2>
+<div class="editorial-divider mx-auto bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-container-max mx-auto">
+<div class="p-10 bg-surface-container-low pizza-card-shadow flex flex-col items-center text-center border border-surface-container-highest/50">
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<p class="font-headline-sm text-[20px] leading-relaxed italic mb-8 text-on-surface">"La mejor pizza que he probado fuera de Italia. La masa es simplemente espectacular, ligera y crujiente."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-primary">MV</div>
+<span class="font-label-caps text-label-caps uppercase text-secondary">Marco V.</span>
+</div>
+</div>
+<div class="p-10 bg-surface-container-low pizza-card-shadow flex flex-col items-center text-center border-x border-surface-container-highest scale-105 z-10 bg-surface-container">
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<p class="font-headline-sm text-[20px] leading-relaxed italic mb-8 text-on-surface">"El ambiente es tan auténtico como su menú. La Tartufata es una experiencia religiosa que repetiré sin duda."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-primary">ES</div>
+<span class="font-label-caps text-label-caps uppercase text-secondary">Elena S.</span>
+</div>
+</div>
+<div class="p-10 bg-surface-container-low pizza-card-shadow flex flex-col items-center text-center border border-surface-container-highest/50">
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<p class="font-headline-sm text-[20px] leading-relaxed italic mb-8 text-on-surface">"Atención impecable e ingredientes que se nota que son de primera calidad. 100% recomendado para amantes de lo real."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-primary">RG</div>
+<span class="font-label-caps text-label-caps uppercase text-secondary">Ricardo G.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-24 bg-background">
+<div class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-headline-md text-headline-md text-center mb-12 text-on-surface">Preguntas Frecuentes</h2>
+<div class="space-y-4">
+<div class="faq-item border-b border-surface-container-highest pb-4">
+<input class="hidden" id="faq1" type="checkbox">
+<label class="flex justify-between items-center cursor-pointer font-headline-sm text-lg text-on-surface hover:text-primary transition-colors" for="faq1">
+                        ¿Hacen envíos a domicilio?
+                        <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+</label>
+<div class="faq-content text-secondary font-body-md">
+                        Sí, contamos con servicio de delivery propio en un radio de 5km y también a través de las principales plataformas. Los pedidos suelen llegar en 30-45 minutos.
+                    </div>
+</div>
+<div class="faq-item border-b border-surface-container-highest pb-4">
+<input class="hidden" id="faq2" type="checkbox">
+<label class="flex justify-between items-center cursor-pointer font-headline-sm text-lg text-on-surface hover:text-primary transition-colors" for="faq2">
+                        ¿Tienen opciones vegetarianas o veganas?
+                        <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+</label>
+<div class="faq-content text-secondary font-body-md">
+                        ¡Claro! Nuestra Margherita y Quattro Formaggi son clásicos vegetarianos. Además, podemos adaptar varias de nuestras pizzas retirando el queso para una opción vegana.
+                    </div>
+</div>
+<div class="faq-item border-b border-surface-container-highest pb-4">
+<input class="hidden" id="faq3" type="checkbox">
+<label class="flex justify-between items-center cursor-pointer font-headline-sm text-lg text-on-surface hover:text-primary transition-colors" for="faq3">
+                        ¿Cuáles son los métodos de pago?
+                        <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+</label>
+<div class="faq-content text-secondary font-body-md">
+                        Aceptamos efectivo, tarjetas de crédito/débito y pagos digitales (Apple Pay, Google Pay). Para pedidos por WhatsApp, puedes pagar mediante link de pago seguro.
+                    </div>
+</div>
+<div class="faq-item border-b border-surface-container-highest pb-4">
+<input class="hidden" id="faq4" type="checkbox">
+<label class="flex justify-between items-center cursor-pointer font-headline-sm text-lg text-on-surface hover:text-primary transition-colors" for="faq4">
+                        ¿Es necesario reservar mesa?
+                        <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+</label>
+<div class="faq-content text-secondary font-body-md">
+                        Recomendamos reservar especialmente los fines de semana para asegurar tu lugar. Puedes hacerlo vía telefónica o completando el formulario de contacto.
+                    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact & Info Section -->
+<section class="py-20 bg-surface-container-lowest text-on-background border-t border-surface-container-highest" id="contact">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row gap-20">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-8">
+<h2 class="font-headline-md text-headline-md text-primary">Visítanos</h2>
+<span class="bg-surface-container-highest text-secondary text-[10px] px-2 py-0.5 rounded uppercase tracking-tighter">Proyecto de demostración</span>
+</div>
+<div class="space-y-10">
+<div class="flex gap-6 items-start">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">location_on</span>
+<div class="flex-1">
+<h5 class="font-label-caps text-label-caps uppercase tracking-widest mb-1 text-on-surface">Ubicación</h5>
+<p class="font-body-lg text-body-lg text-secondary mb-4">Calle de la Tradición 12, Roma, Italia</p>
+<a class="inline-flex items-center gap-2 text-primary border border-primary/30 px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Corrientes+1234,+CABA,+Argentina" target="_blank">
+<span class="material-symbols-outlined text-sm">directions</span>
+<span class="font-label-caps text-[12px] uppercase">Cómo llegar</span>
+</a>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">phone</span>
+<div>
+<h5 class="font-label-caps text-label-caps uppercase tracking-widest mb-1 text-on-surface">Contacto</h5>
+<p class="font-body-lg text-body-lg text-secondary">+39 06 123 4567</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">schedule</span>
+<div>
+<h5 class="font-label-caps text-label-caps uppercase tracking-widest mb-1 text-on-surface">Horarios</h5>
+<p class="font-body-lg text-body-lg text-secondary">Lun - Dom: 12:00 - 23:00</p>
+</div>
+</div>
+</div>
+<!-- Interactive Map Placeholder -->
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Corrientes+1234,+CABA,+Argentina" target="_blank" class="mt-12 h-64 w-full bg-surface-container-low border border-surface-container-highest flex flex-col items-center justify-center relative overflow-hidden group cursor-pointer"><div class="absolute inset-0 bg-[url('https://www.google.com/maps/d/u/0/thumbnail?mid=1_K0S903Wp7_r-O3l4mZ-K-m7B9s')] bg-cover bg-center opacity-30 group-hover:scale-110 transition-transform duration-1000"></div><div class="relative z-10 flex flex-col items-center"><span class="material-symbols-outlined text-primary mb-2" style="font-size: 48px;">location_on</span><span class="font-label-caps text-label-caps text-secondary">Ver en Google Maps</span></div></a>
+</div>
+<div class="flex-1 bg-surface-container-high p-10 pizza-card-shadow border border-surface-container-highest rounded-xl">
+<h2 class="font-headline-sm text-headline-sm mb-8 text-center md:text-left text-on-surface">Reserva tu Mesa</h2>
+<form class="space-y-6">
+<div class="relative">
+<input class="peer w-full border-0 border-b border-outline bg-transparent py-3 text-on-surface focus:ring-0 focus:border-primary transition-all duration-300" id="name" placeholder=" " required="" type="text">
+<label class="absolute left-0 top-3 text-secondary font-label-caps text-label-caps transition-all duration-300 peer-focus:-top-4 peer-focus:text-primary peer-placeholder-shown:top-3" for="name">Nombre Completo</label>
+</div>
+<div class="relative">
+<input class="peer w-full border-0 border-b border-outline bg-transparent py-3 text-on-surface focus:ring-0 focus:border-primary transition-all duration-300" id="email" placeholder=" " required="" type="email">
+<label class="absolute left-0 top-3 text-secondary font-label-caps text-label-caps transition-all duration-300 peer-focus:-top-4 peer-focus:text-primary peer-placeholder-shown:top-3" for="email">Correo Electrónico</label>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="relative">
+<input class="peer w-full border-0 border-b border-outline bg-transparent py-3 text-on-surface focus:ring-0 focus:border-primary transition-all duration-300" id="date" required="" type="date">
+<label class="absolute left-0 -top-4 text-primary font-label-caps text-label-caps" for="date">Fecha</label>
+</div>
+<div class="relative">
+<input class="peer w-full border-0 border-b border-outline bg-transparent py-3 text-on-surface focus:ring-0 focus:border-primary transition-all duration-300" id="guests" placeholder=" " required="" type="number">
+<label class="absolute left-0 top-3 text-secondary font-label-caps text-label-caps transition-all duration-300 peer-focus:-top-4 peer-focus:text-primary peer-placeholder-shown:top-3" for="guests">Comensales</label>
+</div>
+</div>
+<div class="relative">
+<textarea class="peer w-full border-0 border-b border-outline bg-transparent py-3 text-on-surface focus:ring-0 focus:border-primary transition-all duration-300" id="message" placeholder=" " rows="3"></textarea>
+<label class="absolute left-0 top-3 text-secondary font-label-caps text-label-caps transition-all duration-300 peer-focus:-top-4 peer-focus:text-primary peer-placeholder-shown:top-3" for="message">Mensaje Adicional</label>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container py-4 font-label-caps text-label-caps uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors mt-4 active:scale-[0.98]" type="submit">
+                        Enviar Reserva
+                    </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full py-16 px-margin-mobile md:px-margin-desktop flex flex-col items-center text-center bg-surface-container-lowest border-t-2 border-primary">
+<div class="font-headline-sm text-headline-sm text-primary mb-6">Pizza Roma</div>
+<div class="flex flex-wrap justify-center gap-8 mb-10">
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-opacity" href="#">Privacidad</a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-opacity" href="#">Términos</a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-opacity" href="#">Soporte</a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-opacity" href="#">Franquicias</a>
+</div>
+<div class="flex gap-6 mb-8 text-primary">
+<a aria-label="Facebook" class="hover:opacity-70 transition-opacity" href="#"><span class="material-symbols-outlined">qr_code_2</span></a>
+<a aria-label="Instagram" class="hover:opacity-70 transition-opacity" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
+<a aria-label="TikTok" class="hover:opacity-70 transition-opacity" href="#"><span class="material-symbols-outlined">smart_display</span></a>
+</div>
+<div class="max-w-xl mx-auto space-y-4">
+<p class="font-body-md text-secondary opacity-60">© 2024 Pizza Roma. Auténtica tradición italiana.</p>
+<p class="text-[10px] font-label-caps uppercase text-secondary/40 tracking-wider">Proyecto conceptual creado para portafolio. Los datos, precios y testimonios son de demostración.</p>
+</div>
+</footer>
+<script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // FAQ Accordion interactivity for accessibility
+    document.querySelectorAll('.faq-item input').forEach(input => {
+        input.addEventListener('change', function() {
+            const icon = this.nextElementSibling.querySelector('.material-symbols-outlined');
+            if (this.checked) {
+                icon.style.transform = 'rotate(180deg)';
+                // Close others if desired
+                document.querySelectorAll('.faq-item input').forEach(other => {
+                    if (other !== this) {
+                        other.checked = false;
+                        other.nextElementSibling.querySelector('.material-symbols-outlined').style.transform = 'rotate(0deg)';
+                    }
+                });
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        });
+    });
+
+    // Shader Implementation
+    const canvas = document.getElementById('hero-shader');
+    const gl = canvas.getContext('webgl');
+
+    if (gl) {
+        const vertexSource = `
+            attribute vec2 position;
+            varying vec2 v_texCoord;
+            void main() {
+                v_texCoord = position * 0.5 + 0.5;
+                gl_Position = vec4(position, 0.0, 1.0);
+            }
+        `;
+
+        const fragmentSource = `
+            precision highp float;
+            uniform float u_time;
+            uniform vec2 u_resolution;
+            varying vec2 v_texCoord;
+
+            void main() {
+                vec2 uv = v_texCoord;
+                float color1 = sin(uv.x * 3.0 + u_time * 0.5) * 0.5 + 0.5;
+                float color2 = cos(uv.y * 3.0 - u_time * 0.4) * 0.5 + 0.5;
+                vec3 color_bg = vec3(0.05, 0.05, 0.05);
+                vec3 color_accent = vec3(0.65, 0.1, 0.18);
+                float mix_val = color1 * color2 * 0.15;
+                vec3 final_color = mix(color_bg, color_accent * 0.1, mix_val);
+                float vignette = 1.0 - length(uv - 0.5) * 0.7;
+                final_color *= vignette;
+                gl_FragColor = vec4(final_color, 1.0);
+            }
+        `;
+
+        function createShader(gl, type, source) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            return shader;
+        }
+
+        const program = gl.createProgram();
+        gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vertexSource));
+        gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fragmentSource));
+        gl.linkProgram(program);
+
+        const positionBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+
+        const positionLocation = gl.getAttribLocation(program, 'position');
+        const timeLocation = gl.getUniformLocation(program, 'u_time');
+        const resolutionLocation = gl.getUniformLocation(program, 'u_resolution');
+
+        function render(time) {
+            canvas.width = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
+            gl.viewport(0, 0, canvas.width, canvas.height);
+            
+            gl.useProgram(program);
+            gl.enableVertexAttribArray(positionLocation);
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+            gl.uniform1f(timeLocation, time * 0.001);
+            gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+
+            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+            requestAnimationFrame(render);
+        }
+        requestAnimationFrame(render);
+    }
+</script>
+
+
+
+
+</body></html>
